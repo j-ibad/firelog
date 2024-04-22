@@ -1,0 +1,16 @@
+
+**/node_modules
+
+**/dist
+**/config
+**/build
+
+**/*.secret*
+**/*.tmp*
+
+
+package-lock.json
+
+
+
+**/data

@@ -1,0 +1,7 @@
+syntax = "proto3";
+
+import public "proto/base.proto";
+import public "proto/blog.proto";
+import public "proto/topic.proto";
+import public "proto/post.proto";
+import public "proto/file.proto";

@@ -1,0 +1,55 @@
+syntax = "proto3";
+package file;
+
+import "base.proto";
+
+
+// [=== FILES ===]
+service FileService {
+  rpc ListFiles (ListFilesArgs) returns (ListFilesResp) {}
+  rpc GetFiles (GetFilesArgs) returns (GetFilesResp) {}
+  rpc UpdateFiles (UpdateFilesArgs) returns (UpdateFilesResp) {}
+}
+
+message File {  // Represents a file and necessary metadata
+  string path = 1;
+  optional bytes body = 2;
+  optional string mime = 3;
+}
+message FileOp {  // A file operation
+  string op = 1;  // "W" for Write, "D" for Delete
+  File file = 2;
+}
+
+
+// Messages for FileService.ListFiles
+message ListFilesArgs { 
+  optional UserId user = 1;
+  bytes blog_id = 2;
+  bytes post_id = 3;
+}
+message ListFilesResp {
+  Status status = 1;
+  repeated string paths = 2;
+}
+// Messages for FileService.GetFiles
+message GetFilesArgs { 
+  optional UserId user = 1;
+  bytes blog_id = 2;
+  bytes post_id = 3;
+  repeated string paths = 4;
+}
+message GetFilesResp {
+  Status status = 1;
+  repeated File files = 2;
+}
+// Messages for FileService.UpdateFiles
+message UpdateFilesArgs { 
+  optional UserId user = 1;
+  bytes blog_id = 2;
+  bytes post_id = 3;
+  repeated FileOp file_ops = 4;
+}
+message UpdateFilesResp {
+  Status status = 1;
+}

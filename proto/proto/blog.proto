@@ -1,0 +1,65 @@
+syntax = "proto3";
+package blog;
+
+import "base.proto";
+
+
+// [=== BLOG ===]
+service BlogService {
+  rpc ListBlog (ListBlogArgs) returns (ListBlogResp) {}
+  rpc GetBlog (GetBlogArgs) returns (GetBlogResp) {}
+  rpc CreateBlog (CreateBlogArgs) returns (CreateBlogResp) {}
+  rpc UpdateBlog (UpdateBlogArgs) returns (UpdateBlogResp) {}
+  rpc DeleteBlog (DeleteBlogArgs) returns (DeleteBlogResp) {}
+}
+
+message Blog {
+  optional bytes id = 1;
+  string name = 2;
+  optional bytes owner_id = 3;
+  optional string owner_type = 4;
+}
+
+// Messages for BlogService.ListBlog
+message ListBlogArgs { 
+  optional UserId user = 1;
+  optional Page page = 2;
+}
+message ListBlogResp {
+  Status status = 1;
+  repeated Blog blog = 2;
+}
+// Messages for BlogService.GetBlog
+message GetBlogArgs { 
+  optional UserId user = 1;
+  bytes id = 2;
+}
+message GetBlogResp {
+  Status status = 1;
+  optional Blog blog = 2;
+}
+// Messages for BlogService.CreateBlog
+message CreateBlogArgs { 
+  optional UserId user = 1;
+  Blog blog = 2;
+}
+message CreateBlogResp {
+  Status status = 1;
+  optional bytes id = 2;
+}
+// Messages for BlogService.UpdateBlog
+message UpdateBlogArgs { 
+  optional UserId user = 1;
+  Blog blog = 2;
+}
+message UpdateBlogResp {
+  Status status = 1;
+}
+// Messages for BlogService.DeleteBlog
+message DeleteBlogArgs { 
+  optional UserId user = 1;
+  bytes id = 2;
+}
+message DeleteBlogResp {
+  Status status = 1;
+}

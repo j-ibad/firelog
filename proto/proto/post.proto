@@ -1,0 +1,83 @@
+syntax = "proto3";
+package post;
+
+import "base.proto";
+
+
+// [=== POST ===]
+service PostService {
+  rpc ListPost (ListPostArgs) returns (ListPostResp) {}
+  rpc GetPost (GetPostArgs) returns (GetPostResp) {}
+  rpc CreatePost (CreatePostArgs) returns (CreatePostResp) {}
+  rpc UpdatePost (UpdatePostArgs) returns (UpdatePostResp) {}
+  rpc DeletePost (DeletePostArgs) returns (DeletePostResp) {}
+
+  rpc NameToPostUri (NameToPostUriArgs) returns (NameToPostUriResp) {}
+}
+
+message Post {
+  optional bytes id = 1;
+  bytes topic_id = 2;
+  string name = 3;
+}
+
+// Messages for PostService.ListPost
+message ListPostArgs { 
+  optional UserId user = 1;
+  optional Page page = 2;
+  bytes blog_id = 3;
+  bytes topic_id = 4;
+}
+message ListPostResp {
+  Status status = 1;
+  repeated Post post = 2;
+}
+// Messages for PostService.GetPost
+message GetPostArgs { 
+  optional UserId user = 1;
+  bytes blog_id = 2;
+  bytes id = 3;
+}
+message GetPostResp {
+  Status status = 1;
+  optional Post post = 2;
+}
+// Messages for PostService.CreatePost
+message CreatePostArgs { 
+  optional UserId user = 1;
+  bytes blog_id = 2;
+  Post post = 3;
+}
+message CreatePostResp {
+  Status status = 1;
+  optional bytes id = 2;
+}
+// Messages for PostService.UpdatePost
+message UpdatePostArgs { 
+  optional UserId user = 1;
+  bytes blog_id = 2;
+  Post post = 3;
+}
+message UpdatePostResp {
+  Status status = 1;
+}
+// Messages for PostService.DeletePost
+message DeletePostArgs { 
+  optional UserId user = 1;
+  bytes blog_id = 2;
+  bytes id = 3;
+}
+message DeletePostResp {
+  Status status = 1;
+}
+
+// Messaages for PostService.NameToPostUri
+message NameToPostUriArgs {
+  optional UserId user = 1;
+  bytes blog_id = 2;
+  string uri = 3;
+}
+message NameToPostUriResp {
+  Status status = 1;
+  optional bytes id = 3;
+}

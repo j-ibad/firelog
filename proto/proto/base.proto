@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+// Empty Message
+message Empty {}
+
+// Status Message carries exit code and message
+message Status {
+  int32 code = 1;  // Exit code (0 if Success, else Error)
+  optional string msg = 2;  // Error message if applicable
+}
+
+message Page {  // Pagination Request
+  optional int32 pg = 1;  // Page number, defaults to first page
+  optional int32 sz = 2;  // Page size, default to all
+}
+
+// User Identifier
+message UserId {
+  optional bytes uid = 1;  // User ID
+  repeated bytes gid = 2;  // Group ID array
+}

@@ -1,0 +1,7 @@
+{
+  "main": "api.js",
+  "scripts": {
+    "start": "node ../FireLog.js"
+  },
+  "devDependencies": {}
+}

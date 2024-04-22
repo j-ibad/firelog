@@ -1,0 +1,69 @@
+syntax = "proto3";
+package topic;
+
+import "base.proto";
+
+
+// [=== TOPIC ===]
+service TopicService {
+  rpc ListTopic (ListTopicArgs) returns (ListTopicResp) {}
+  rpc GetTopic (GetTopicArgs) returns (GetTopicResp) {}
+  rpc CreateTopic (CreateTopicArgs) returns (CreateTopicResp) {}
+  rpc UpdateTopic (UpdateTopicArgs) returns (UpdateTopicResp) {}
+  rpc DeleteTopic (DeleteTopicArgs) returns (DeleteTopicResp) {}
+}
+
+message Topic {
+  optional bytes id = 1;
+  bytes blog_id = 2;
+  string name = 3;
+}
+
+// Messages for TopicService.ListTopic
+message ListTopicArgs { 
+  optional UserId user = 1;
+  optional Page page = 2;
+  bytes blog_id = 3;
+}
+message ListTopicResp {
+  Status status = 1;
+  repeated Topic topic = 2;
+}
+// Messages for TopicService.GetTopic
+message GetTopicArgs { 
+  optional UserId user = 1;
+  bytes blog_id = 2;
+  bytes id = 3;
+}
+message GetTopicResp {
+  Status status = 1;
+  optional Topic topic = 2;
+}
+// Messages for TopicService.CreateTopic
+message CreateTopicArgs { 
+  optional UserId user = 1;
+  bytes blog_id = 2;
+  Topic topic = 3;
+}
+message CreateTopicResp {
+  Status status = 1;
+  optional bytes id = 2;
+}
+// Messages for TopicService.UpdateTopic
+message UpdateTopicArgs { 
+  optional UserId user = 1;
+  bytes blog_id = 2;
+  Topic topic = 3;
+}
+message UpdateTopicResp {
+  Status status = 1;
+}
+// Messages for TopicService.DeleteTopic
+message DeleteTopicArgs { 
+  optional UserId user = 1;
+  bytes blog_id = 2;
+  bytes id = 3;
+}
+message DeleteTopicResp {
+  Status status = 1;
+}

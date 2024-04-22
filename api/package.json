@@ -1,0 +1,32 @@
+{
+  "name": "@ibad.one/firelog",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Blogging Microservice using gRPC",
+  "main": "index.js",
+  "type": "commonjs",
+  "scripts": {
+    "build": "node build.js",
+    "dev": "",
+    "start": "node ../FireLog.js",
+    "restart": "npm run build && npm run start"
+  },
+  "keywords": ["gRPC", "blog", "firelog"],
+  "author": "Josh Ibad",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "@pub.ibad.one/ibad-grpc": "^0.1.1",
+    "@types/better-sqlite3": "^7.6.9",
+    "@types/mime-types": "^2.1.4",
+    "@types/node": "^20.12.5",
+    "@types/uuid": "^9.0.8",
+    "esbuild": "^0.20.2",
+    "mime-types": "^2.1.35",
+    "toml": "^3.0.0",
+    "typescript": "^5.4.4",
+    "uuid": "^9.0.1"
+  },
+  "dependencies": {
+    "better-sqlite3": "^9.5.0"
+  }
+}
