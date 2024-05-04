@@ -1,6 +1,6 @@
 {
   "name": "@pub.ibad.one/firelog-node",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "NodeJS gRPC Client for the FireLog API",
   "main": "build/src/index.js",
   "type": "commonjs",
@@ -23,6 +23,7 @@
   "files": [
     "src/**/*.ts",
     "build/src/**/*.{js,d.ts,js.map}",
+    "build/proto/**/*",
     "LICENSE"
   ]
 }

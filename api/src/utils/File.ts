@@ -64,9 +64,11 @@ export default class File {
     return retv;
   }
 
-  static write_file(dir_path: string, path: string, body: Buffer){
-    const sanitized_path = File.sanitize_path(path);
-    const file_path = File.resolve_path(dir_path, sanitized_path);
+  static write_file(root_path: string, path_: string, body: Buffer){
+    const sanitized_path = File.sanitize_path(path_);
+    const file_path = File.resolve_path(root_path, sanitized_path);
+    const dir_path = path.dirname(file_path);
+    try_mkdir(dir_path);
     fs.writeFileSync(file_path, body);
   }
 
