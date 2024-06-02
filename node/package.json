@@ -1,6 +1,6 @@
 {
   "name": "@pub.ibad.one/firelog-node",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "NodeJS gRPC Client for the FireLog API",
   "main": "build/src/index.js",
   "type": "commonjs",
@@ -9,7 +9,11 @@
     "start": "npm run --prefix tests start",
     "restart": "npm run build && npm run --prefix tests start"
   },
-  "keywords": ["gRPC", "blog", "firelog"],
+  "keywords": [
+    "gRPC",
+    "blog",
+    "firelog"
+  ],
   "author": "Josh Ibad",
   "license": "Apache-2.0",
   "devDependencies": {
@@ -18,7 +22,7 @@
     "typescript": "^5.4.5"
   },
   "dependencies": {
-    "@pub.ibad.one/ibad-grpc": "^0.1.1"
+    "@pub.ibad.one/ibad-grpc": "^0.1.2"
   },
   "files": [
     "src/**/*.ts",

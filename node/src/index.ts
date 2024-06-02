@@ -1,4 +1,4 @@
-import {IbadGrpcClient, IbadGrpClientCreds} from '@pub.ibad.one/ibad-grpc';
+import {IbadGrpcClient, IbadGrpcClientCreds} from '@pub.ibad.one/ibad-grpc';
 import path from 'path';
 
 
@@ -24,7 +24,7 @@ const FIRELOG_OPTS = {
 
 
 export function FireLogAPI(host: string, port: string|number,
-  creds=IbadGrpClientCreds.createInsecure(),
+  creds=IbadGrpcClientCreds.createInsecure(),
   opts_: any={}
 ){
   const opts = Object.assign(FIRELOG_OPTS, opts_);
@@ -37,4 +37,4 @@ export function FireLogAPI(host: string, port: string|number,
   }
 };
 
-export {IbadGrpClientCreds as IbadGrpcClientCreds};
+export {IbadGrpcClientCreds};
