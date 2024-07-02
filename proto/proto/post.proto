@@ -19,6 +19,7 @@ message Post {
   optional bytes id = 1;
   bytes topic_id = 2;
   string name = 3;
+  optional string payload = 4;  // Arbitrary JSON string payload
 }
 
 // Messages for PostService.ListPost

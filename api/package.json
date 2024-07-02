@@ -11,11 +11,15 @@
     "start": "node ../FireLog.js",
     "restart": "npm run build && npm run start"
   },
-  "keywords": ["gRPC", "blog", "firelog"],
+  "keywords": [
+    "gRPC",
+    "blog",
+    "firelog"
+  ],
   "author": "Josh Ibad",
   "license": "Apache-2.0",
   "devDependencies": {
-    "@pub.ibad.one/ibad-grpc": "^0.1.1",
+    "@ibad.one/ibad-grpc": "^0.1.2",
     "@types/better-sqlite3": "^7.6.9",
     "@types/mime-types": "^2.1.4",
     "@types/node": "^20.12.5",

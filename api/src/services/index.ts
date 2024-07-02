@@ -1,5 +1,5 @@
 import path from 'path';
-import {IbadGrpcServer} from '@pub.ibad.one/ibad-grpc';
+import {IbadGrpcServer} from '@ibad.one/ibad-grpc';
 import {APP_CONF} from '../utils/Config';
 
 const PROTO_PATH = path.join(...APP_CONF?.grpc?.proto);

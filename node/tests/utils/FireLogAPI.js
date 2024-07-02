@@ -1,4 +1,4 @@
-const {FireLogAPI: FireLogAPI_connect, IbadGrpcClientCreds} = require('@pub.ibad.one/firelog-node');
+const {FireLogAPI: FireLogAPI_connect, IbadGrpcClientCreds} = require('@ibad.one/firelog-node');
 
 const FIRELOG_OPTS = {
   verbose: 3,

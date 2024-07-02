@@ -28,10 +28,10 @@ async function test_1(blog0_id, post0_id){
 
 
 async function test(){
-  const blog0_id = Buffer.from('9Bc7zHLgRa-DKXViFoRwdQ', 'base64url');
-  const post0_id = Buffer.from('QjA44N_aTLyBkbQ-q0KAhg', 'base64url');
+  const blog0_id = Buffer.from('UBiQN471Sb2Iav5lpiU9iw', 'base64url');
+  const post0_id = Buffer.from('jKZCUBh-S0-qfJOsrDGQ2A', 'base64url');
   // test_0();
-  test_1(blog0_id, post0_id);
+  // test_1(blog0_id, post0_id);
   // await serve_post(8080, blog0_id, post0_id);
   // await serve_blog(8080, blog0_id);
   await serve_blog_nested(8080, blog0_id);

@@ -7,6 +7,7 @@ export namespace post {
     id?: bytes_t;
     topic_id: bytes_t;
     name: string;
+    payload: string;
   }
 
 

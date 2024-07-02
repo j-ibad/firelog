@@ -1,4 +1,4 @@
-import {IbadGrpcClient, IbadGrpcClientCreds} from '@pub.ibad.one/ibad-grpc';
+import {IbadGrpcClient, IbadGrpcClientCreds} from '@ibad.one/ibad-grpc';
 import path from 'path';
 
 
@@ -8,7 +8,7 @@ import PostService_ from './services/PostService';
 import FileService_ from './services/FileService';
 
 // Resolve proto dir
-const SELF_PKG_NAME = '@pub.ibad.one/firelog-node';
+const SELF_PKG_NAME = '@ibad.one/firelog-node';
 let SELF_ROOT_DIR = __dirname;
 try {
   const module_entry = require.resolve(SELF_PKG_NAME);

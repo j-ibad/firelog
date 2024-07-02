@@ -1,4 +1,4 @@
-import {IbadGrpcClient} from '@pub.ibad.one/ibad-grpc';
+import {IbadGrpcClient} from '@ibad.one/ibad-grpc';
 
 
 export default (gRPC: IbadGrpcClient) => {

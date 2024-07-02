@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import {IbadGrpcServerCreds} from '@pub.ibad.one/ibad-grpc';
+import {IbadGrpcServerCreds} from '@ibad.one/ibad-grpc';
 
 import './models';
 import {gRPC} from './services';

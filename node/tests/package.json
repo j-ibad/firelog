@@ -1,8 +1,8 @@
 {
-  "name": "@pub.ibad.one/firelog-node-tests",
+  "name": "@ibad.one/firelog-node-tests",
   "private": true,
   "version": "0.1.0",
-  "description": "Tests for @pub.ibad.one/firelog-node",
+  "description": "Tests for @ibad.one/firelog-node",
   "main": "index.js",
   "type": "commonjs",
   "scripts": {
@@ -12,6 +12,7 @@
   "author": "Josh Ibad",
   "license": "LicenseRef-LICENSE",
   "dependencies": {
+    "@ibad.one/firelog-node": "^0.1.3",
     "express": "^4.19.2"
   }
 }

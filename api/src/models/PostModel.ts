@@ -12,7 +12,7 @@ export default class PostModel {
   ){
     const firelog_db = new FireLogDB();
     const sql_query = firelog_db.db!.prepare(`
-      SELECT P.id, P.name, P.topic_id, P.uri
+      SELECT P.id, P.name, P.payload, P.topic_id, P.uri
       FROM Post P
       WHERE P.blog_id=? AND P.topic_id=?
     `);
@@ -25,7 +25,7 @@ export default class PostModel {
   static get_post(user: fl.base.UserIdOpt, blog_id: fl.bytes_t, id: fl.bytes_t){
     const firelog_db = new FireLogDB();
     const sql_query = firelog_db.db!.prepare(`
-      SELECT P.id, P.name, P.topic_id, P.blog_id
+      SELECT P.id, P.name, P.payload, P.topic_id, P.blog_id
       FROM Post AS P
       WHERE P.blog_id=? AND P.id=?
     `);
@@ -39,14 +39,14 @@ export default class PostModel {
     const firelog_db = new FireLogDB();
     const new_id = FireLogDB.uuid();
     const sql_query = firelog_db.db!.prepare(`
-      INSERT OR IGNORE INTO Post (id, name, uri, topic_id, blog_id)
-      SELECT ? id, ? name, ? uri, ? topic_id, ? blog_id
+      INSERT OR IGNORE INTO Post (id, name, payload, uri, topic_id, blog_id)
+      SELECT ? id, ? name, ? payload, ? uri, ? topic_id, ? blog_id
       WHERE EXISTS (SELECT * FROM Topic T WHERE T.id=? AND T.blog_id=?)
     `);
     const topic_id = post.topic_id;
     const post_uri = URI.str_to_uri(post.name);
-    const sql_res = sql_query.run(new_id, post.name, post_uri, topic_id, blog_id,
-      topic_id, blog_id);
+    const sql_res = sql_query.run(new_id, post.name, post.payload ?? null, 
+      post_uri, topic_id, blog_id, topic_id, blog_id);
     const is_inserted = sql_res.changes > 0;
     const retv = {
       id: is_inserted ? new_id : undefined,
@@ -60,13 +60,13 @@ export default class PostModel {
     const firelog_db = new FireLogDB();
     const sql_query = firelog_db.db!.prepare(`
       UPDATE Post 
-      SET name=?, uri=?, topic_id=IFNULL(?, topic_id), blog_id=?
+      SET name=?, payload=?, uri=?, topic_id=IFNULL(?, topic_id), blog_id=?
       WHERE blog_id=? AND id=?
     `);
     const topic_id = post.topic_id;
     const post_uri = URI.str_to_uri(post.name);
-    const sql_res = sql_query.run(post.name, post_uri, topic_id, blog_id,
-      blog_id, post.id!);
+    const sql_res = sql_query.run(post.name, post.payload ?? null, post_uri, 
+      topic_id, blog_id, blog_id, post.id!);
     const retv = {changes: sql_res.changes};
     firelog_db.db?.close();
     return retv;
@@ -131,6 +131,7 @@ export default class PostModel {
       CREATE TABLE IF NOT EXISTS Post (
         id BLOB PRIMARY KEY,
         name TEXT NOT NULL,
+        payload TEXT NULL,
         uri TEXT NOT NULL,
         topic_id BLOB NOT NULL REFERENCES Topic(id),
         blog_id BLOB NOT NULL REFERENCES Blog(id),
